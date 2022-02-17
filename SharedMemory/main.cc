@@ -8,7 +8,7 @@ int main(int argc, char *argv[])
     char path[]="/workspace/sharedfile";
 	char size = 20;
 	char data[size];
-	char write_data[]="12345";
+	char write_data[]="123456";
 
     SharedMemory shm1;
     shm1.Create(path,12288);
