@@ -18,4 +18,4 @@ jobs:
       with:
         python-version: "3.10"
     - run: pip install cpplint
-    - run: cpplint --filter=-whitespace/tab --recursive .
+    - run: cpplint --filter=-whitespace/tab,legal/copyright --recursive .

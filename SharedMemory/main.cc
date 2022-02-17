@@ -1,10 +1,8 @@
-#include "./SharedMemory.h"
 #include <unistd.h>
 #include <iostream>
+#include "./SharedMemory.h"
 
-
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
     char path[]="/workspace/sharedfile";
 	char size = 20;
 	char data[size];
@@ -13,11 +11,10 @@ int main(int argc, char *argv[])
     SharedMemory shm1;
     shm1.Create(path, 12288);
 
-
  #if 1
     shm1.Read(data, size);
 	std::cout << "Read:";
-	for(int i = 0; i<size; i++) {
+	for(int i = 0; i < size; i++) {
 		std::cout << data[i];
 	}
 	std::cout << std::endl;
@@ -31,7 +28,7 @@ int main(int argc, char *argv[])
 
     shm1.Read(data, size);
 	std::cout << "Read:";
-	for(int i = 0; i<size; i++) {
+	for(int i = 0; i < size; i++) {
 		std::cout << data[i];
 	}
 	std::cout << std::endl;
@@ -45,8 +42,8 @@ int main(int argc, char *argv[])
 
 	TEST_STRUCT test_data;
     shm1.ReadStruct<TEST_STRUCT>(&test_data);
-	std::cout << "Read int:" << test_data.intData 
-		<< " byteData:" << test_data.byteData 
+	std::cout << "Read int:" << test_data.intData
+		<< " byteData:" << test_data.byteData
 		<< " boolData:" << test_data.boolData << std::endl;
 
 	TEST_STRUCT write_struct_data;
@@ -56,8 +53,8 @@ int main(int argc, char *argv[])
 
     shm1.WriteStruct<TEST_STRUCT>(&write_struct_data);
     shm1.ReadStruct<TEST_STRUCT>(&test_data);
-	std::cout << "Read int:" << test_data.intData 
-		<< " byteData:" << test_data.byteData 
+	std::cout << "Read int:" << test_data.intData
+		<< " byteData:" << test_data.byteData
 		<< " boolData:" << test_data.boolData << std::endl;
 #endif
 	shm1.Close();
