@@ -12,7 +12,7 @@ class SharedMemory
     template <typename T>
     bool ReadStruct(T *read_data) {
         bool ret = false;
-        if(memoryMappedFileStatus) {
+        if (memoryMappedFileStatus) {
           memcpy(read_data, data, sizeof(T));
           ret = true;
         }
@@ -21,7 +21,7 @@ class SharedMemory
     template <typename T>
     bool WriteStruct(T *write_data) {
         bool ret = false;
-        if(memoryMappedFileStatus) {
+        if (memoryMappedFileStatus) {
           memcpy(data, write_data, sizeof(T));
           ret = true;
         }
@@ -34,7 +34,7 @@ class SharedMemory
     char *data;
     int size;
 };
-typedef struct{
+typedef struct {
     int intData;
     char byteData;
     bool boolData;
