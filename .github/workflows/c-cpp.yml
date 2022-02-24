@@ -5,12 +5,12 @@ on:
     # branches: [ main ]
     branches: [ branch1 ]
     paths:
-        - "SharedMemory"
+        - "SharedMemory/**"
   pull_request:
     # branches: [ main ]
     branches: [ branch1 ]
     paths:
-        - "SharedMemory"
+        - "SharedMemory/**"
 
 jobs:
   build:
