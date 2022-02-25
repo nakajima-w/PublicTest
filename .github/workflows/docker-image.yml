@@ -8,9 +8,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build . --file dockerfile --tag my-image-name:$(date +%s)
+      run: docker build . --file dockerfile --tag test_image
     - name: Run Container
-      run: docker run -v $(pwd):/workspace my-image-name:$(date +%s)
+      run: docker run -v $(pwd):/workspace test_image
     - name: ls
       run: ls -a
     
