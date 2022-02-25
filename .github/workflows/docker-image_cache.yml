@@ -1,0 +1,29 @@
+name: Docker Image CI with Cache?
+
+on: [ workflow_dispatch ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1
+
+    - name: Build and push (backend)
+      uses: docker/build-push-action@v2
+      with:
+        # context: ./backend
+        # file: ./backend/docker/Dockerfile
+        file: ./Dockerfile
+        push: false
+        tags: ghcr.io/${{ github.repository }}/test_image
+        cache-from: type=registry,ref=ghcr.io/${{ github.repository }}/test_image
+        cache-to: type=inline
+    # - name: Build the Docker image
+    #   run: docker build . --file dockerfile --tag test_image
+    - name: Run Container
+      run: docker run -v $(pwd):/workspace test_image
+    - name: ls
+      run: ls -a
+    
