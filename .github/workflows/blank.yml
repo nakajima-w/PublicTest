@@ -1,2 +1,10 @@
 name: Blank
+on: [ workflow_dispatch ]
 
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name : test message
+      run:
+        echo test.
