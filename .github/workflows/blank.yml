@@ -1,0 +1,14 @@
+name: Blank
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name : test message
+      run:
+        echo test.
+

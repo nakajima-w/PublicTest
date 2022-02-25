@@ -2,10 +2,15 @@ name: cpplint
 
 on:
   push:
-    branches: [ main ]
+    # branches: [ main ]
+    branches: [ branch1 ]
+    paths:
+        - "SharedMemory/**"
   pull_request:
-    branches: [ main ]
-
+    # branches: [ main ]
+    branches: [ branch1 ]
+    paths:
+        - "SharedMemory/**"
 jobs:
   build:
 
