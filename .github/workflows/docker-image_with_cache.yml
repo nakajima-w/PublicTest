@@ -1,4 +1,4 @@
-name: Make docker image(with Cache)
+name: Build Check
 
 on: [ workflow_dispatch ]
 
@@ -52,5 +52,5 @@ jobs:
     - name: Save
       uses: actions/upload-artifact@v2
       with:
-        name: docker_ls
-        path: ./dockerfile
+        name: Result
+        path: ./docker_ls.txt
