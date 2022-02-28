@@ -50,7 +50,7 @@ jobs:
       run: docker exec test_container /bin/bash -c "cd /workspace && ls -a"
 
     - name: Cpplint
-      run: docker exec test_container cpplint --filter=-whitespace/tab,-legal/copyright --recursive /workspace/SharedMemory > ./cpplint_result.txt
+      run: docker exec test_container cpplint --filter=-whitespace/tab,-legal/copyright --recursive /workspace/SharedMemory 2 > ./cpplint_result.txt
 
     - name: ls
       run: ls -a
