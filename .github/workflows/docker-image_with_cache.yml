@@ -45,12 +45,12 @@ jobs:
       run: docker image ls > ./docker_ls.txt
 
     - name: Run Container
-      run: docker run -v $(pwd):/workspace ${{ env.DOCKER_IMAGE }}
-    - name: ls
-      run: ls -a
+      run: docker run -it -d --name test_container -v $(pwd):/workspace ${{ env.DOCKER_IMAGE }}
+    - name: ls in container
+      run: docker exec test_container /bin/bash -c "cd /workspace && ls -a"
 
     - name: Save
       uses: actions/upload-artifact@v2
       with:
         name: docker_ls
-        path: ./dokcer_ls.txt
+        path: ./dockerfile
