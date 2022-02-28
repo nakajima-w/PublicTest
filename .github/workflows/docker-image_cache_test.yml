@@ -40,7 +40,10 @@ jobs:
 
     # - name: Build the Docker image
     #   run: docker build . --file dockerfile --tag test_image
-    - name: Run Container
-      run: docker run -v $(pwd):/workspace test_image
-    - name: ls
-      run: ls -a
+    # - name: Run Container
+    #   run: docker run -v $(pwd):/workspace test_image
+    # - name: ls
+    #   run: ls -a
+    - name docker ls
+      run: docker image ls -a
+
