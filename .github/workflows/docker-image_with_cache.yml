@@ -50,7 +50,7 @@ jobs:
       run: docker exec test_container /bin/bash -c "cd /workspace && ls -a"
 
     - name: Cpplint
-      run: docker exec test_container cpplint --filter=-whitespace/tab,-legal/copyright --recursive .
+      run: docker exec test_container cpplint --filter=-whitespace/tab,-legal/copyright --recursive /workspace/SharedMemory
 
     - name: Save
       uses: actions/upload-artifact@v2
