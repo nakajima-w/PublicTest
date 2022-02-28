@@ -53,6 +53,7 @@ jobs:
       run: docker exec test_container cpplint --filter=-whitespace/tab,-legal/copyright --recursive /workspace/SharedMemory 2 > ./cpplint_result.txt
 
     - name: ls
+      if: always()    
       run: ls -a
 
     - name: Save
