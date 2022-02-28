@@ -12,6 +12,9 @@ jobs:
     - name: Checkout    
       uses: actions/checkout@v2
 
+    # - name: Build the Docker image
+    #   run: docker build . --file dockerfile --tag test_image
+
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v1
 
@@ -28,9 +31,8 @@ jobs:
       with:
         context: .
         push: false
-        load: true        
-        # tags: user/app:latest
-        tags: ${{ env.DOCKER_IMAGE }}:latest
+        load: true
+        tags: ${{ env.DOCKER_IMAGE }}
         cache-from: type=local,src=/tmp/.buildx-cache
         cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
 
@@ -42,10 +44,7 @@ jobs:
     - name: docker ls
       run: docker image ls
 
-    # - name: Build the Docker image
-    #   run: docker build . --file dockerfile --tag test_image
     - name: Run Container
-      run: docker run -v $(pwd):/workspace test_image
+      run: docker run -v $(pwd):/workspace ${{ env.DOCKER_IMAGE }}
     - name: ls
       run: ls -a
-
