@@ -36,3 +36,6 @@ RUN apt-get install -y \
 RUN pip install --upgrade pip
 RUN pip install grpcio==1.39.0
 RUN pip install grpcio-tools==1.26.0
+
+RUN pip install cpplint
+
