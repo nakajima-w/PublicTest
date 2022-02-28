@@ -57,6 +57,7 @@ jobs:
       run: ls -a
 
     - name: Save
+      if: always()    
       uses: actions/upload-artifact@v2
       with:
         name: Result
