@@ -41,6 +41,6 @@ jobs:
     # - name: Build the Docker image
     #   run: docker build . --file dockerfile --tag test_image
     - name: Run Container
-      run: docker run -v $(pwd):/workspace ${{ env.DOCKER_IMAGE }}
+      run: docker run -v $(pwd):/workspace test_image
     - name: ls
       run: ls -a
