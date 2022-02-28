@@ -13,4 +13,3 @@ jobs:
       run: docker run -it -d --name test_container -v $(pwd):/workspace test_image
     - name: cd && ls
       run: docker exec test_container /bin/bash -c "cd /workspace && ls"
-    
