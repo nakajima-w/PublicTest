@@ -4,8 +4,6 @@ on: [ workflow_dispatch ]
 
 env:
   DOCKER_IMAGE: test_image
-  CACHE_PATH: cache-${{ env.DOCKER_IMAGE }}
-  LOCALSTACK_VERSION: 0.13.0
 
 jobs:
   build:
