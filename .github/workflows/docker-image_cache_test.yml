@@ -39,12 +39,13 @@ jobs:
         rm -rf /tmp/.buildx-cache
         mv /tmp/.buildx-cache-new /tmp/.buildx-cache
 
-    # - name: Build the Docker image
-    #   run: docker build . --file dockerfile --tag test_image
-    # - name: Run Container
-    #   run: docker run -v $(pwd):/workspace test_image
-    # - name: ls
-    #   run: ls -a
     - name: docker ls
       run: docker image ls
+
+    # - name: Build the Docker image
+    #   run: docker build . --file dockerfile --tag test_image
+    - name: Run Container
+      run: docker run -v $(pwd):/workspace test_image
+    - name: ls
+      run: ls -a
 
