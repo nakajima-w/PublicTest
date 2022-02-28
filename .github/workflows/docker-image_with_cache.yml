@@ -53,7 +53,7 @@ jobs:
       run: docker exec test_container /bin/bash -c "cd /workspace && ls -a"
 
     - name: Cpplint
-      run: docker exec test_container cpplint --output=vs7 --filter=-whitespace/tab,-legal/copyright --recursive /workspace/SharedMemory 2> ./result/cpplint_result.txt
+      run: docker exec test_container cpplint --output=vs7 --filter=-whitespace/tab,-legal/copyright --recursive /workspace/SharedMemory 2>&1 ./result/cpplint_result.txt
 
     - name: ls
       if: always()    
