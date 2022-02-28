@@ -1,4 +1,4 @@
-name: Docker Image CI with Cache2
+name: Make docker image(with Cache)
 
 on: [ workflow_dispatch ]
 
@@ -42,9 +42,15 @@ jobs:
         mv /tmp/.buildx-cache-new /tmp/.buildx-cache
 
     - name: docker ls
-      run: docker image ls
+      run: docker image ls > ./docker_ls.txt
 
     - name: Run Container
       run: docker run -v $(pwd):/workspace ${{ env.DOCKER_IMAGE }}
     - name: ls
       run: ls -a
+
+    - name: Save
+      uses: actions/upload-artifact@v2
+      with:
+        name: docker_ls
+        path: ./dokcer_ls.txt
