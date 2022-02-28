@@ -28,8 +28,9 @@ jobs:
       with:
         context: .
         push: false
+        load: true        
         # tags: user/app:latest
-        tags: ./${{ env.DOCKER_IMAGE }}:latest
+        tags: ${{ env.DOCKER_IMAGE }}:latest
         cache-from: type=local,src=/tmp/.buildx-cache
         cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
 
