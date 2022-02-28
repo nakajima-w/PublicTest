@@ -50,10 +50,14 @@ jobs:
       run: docker exec test_container /bin/bash -c "cd /workspace && ls -a"
 
     - name: Cpplint
-      run: docker exec test_container cpplint --filter=-whitespace/tab,-legal/copyright --recursive /workspace/SharedMemory
+      run: docker exec test_container cpplint --filter=-whitespace/tab,-legal/copyright --recursive /workspace/SharedMemory > ./cpplint_result.txt
+
+    - nanme: ls
+      run: ls -a
 
     - name: Save
       uses: actions/upload-artifact@v2
       with:
         name: Result
         path: ./docker_ls.txt
+              ./cpplint_result.txt              
