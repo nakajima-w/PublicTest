@@ -54,13 +54,12 @@ jobs:
 
     - name: ls
       if: always()    
-      run: ls -a
+      run: ls
 
     - name: Save
       if: always()    
       uses: actions/upload-artifact@v2
       with:
         name: Result
-        path: ./docker_ls.txt
-              ./cpplint_result.txt              
-              ./dockerfile              
+        path: ./dockerfile
+              ./cpplint_result.txt
