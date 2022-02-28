@@ -41,8 +41,11 @@ jobs:
         rm -rf /tmp/.buildx-cache
         mv /tmp/.buildx-cache-new /tmp/.buildx-cache
 
+    - name: Make result folder
+      run: mkdir -p result
+
     - name: docker ls
-      run: docker image ls > ./docker_ls.txt
+      run: docker image ls > ./result/docker_ls.txt
 
     - name: Run Container
       run: docker run -it -d --name test_container -v $(pwd):/workspace ${{ env.DOCKER_IMAGE }}
@@ -50,7 +53,7 @@ jobs:
       run: docker exec test_container /bin/bash -c "cd /workspace && ls -a"
 
     - name: Cpplint
-      run: docker exec test_container cpplint --filter=-whitespace/tab,-legal/copyright --recursive /workspace/SharedMemory 2 > ./cpplint_result.txt
+      run: docker exec test_container cpplint --filter=-whitespace/tab,-legal/copyright --recursive /workspace/SharedMemory 2 > ./result/cpplint_result.txt
 
     - name: ls
       if: always()    
@@ -61,5 +64,4 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: Result
-        path: ./dockerfile
-              ./cpplint_result.txt
+        path: ./result
